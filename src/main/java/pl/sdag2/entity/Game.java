@@ -3,7 +3,7 @@ package pl.sdag2.entity;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
 
 @Entity
 @Getter
@@ -12,7 +12,7 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private DecimalFormat priceFor24h;
+    private BigDecimal priceFor24h;
 
 
 }
