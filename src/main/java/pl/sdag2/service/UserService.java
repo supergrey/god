@@ -29,4 +29,13 @@ public class UserService {
         userRepository.save(user);
         log.info("Utworzono użytkownika: " + user.getLogin());
     }
+
+    public void update(User user) {
+        if (user.getId() == null) {
+            IllegalArgumentException ex = new IllegalArgumentException("Użytkownik o zadanym identyfikatorze nie istnieje");
+            log.error("Nie udało sie edytować użytkownika", ex);
+        }
+        userRepository.edit(user.getLogin(), user.getPassword(), user.getEmail(), user.getUserType(), user.getId());
+        log.info("Edytowano użytkownika: " + user.getLogin());
+    }
 }
