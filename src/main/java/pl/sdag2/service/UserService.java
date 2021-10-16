@@ -11,7 +11,7 @@ import java.util.List;
 @Slf4j
 public class UserService {
 
-private final UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -19,5 +19,14 @@ private final UserRepository userRepository;
 
     public List<User> getAll() {
         return userRepository.findAll();
+    }
+
+    public void create(User user) {
+        if (user.getId() != null) {
+            IllegalArgumentException ex = new IllegalArgumentException("Użytkownik o zadanym identyfikatorze już istnieje");
+            log.error("Błąd zapisu użytkownika", ex);
+        }
+        userRepository.save(user);
+        log.info("Utworzono użytkownika: " + user.getLogin());
     }
 }
