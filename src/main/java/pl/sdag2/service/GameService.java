@@ -35,4 +35,12 @@ public class GameService {
         }
         gameRepository.edit(game.getTitle(), game.getPriceFor24h(), game.getId());
     }
+
+    public void deleteById(Long id) {
+        if (gameRepository.findById(id).isEmpty()) {
+            IllegalArgumentException ex = new IllegalArgumentException("Gra o zadanym identyfikatorze nie istnieje");
+            log.error("Błąd usuwania gry", ex);
+        }
+        gameRepository.deleteById(id);
+    }
 }
