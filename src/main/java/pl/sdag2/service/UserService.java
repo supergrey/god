@@ -38,4 +38,13 @@ public class UserService {
         userRepository.edit(user.getLogin(), user.getPassword(), user.getEmail(), user.getUserType(), user.getId());
         log.info("Edytowano użytkownika: " + user.getLogin());
     }
+
+    public void deleteById(Long id) {
+        if (userRepository.findById(id).isEmpty()) {
+            IllegalArgumentException ex = new IllegalArgumentException("Użytkownik o zadanym identyfikatorze nie istnieje");
+            log.error("Błąd usuwania użytkownika", ex);
+        }
+        userRepository.deleteById(id);
+        log.info("Usunięto użytkownika o identyfikatorze: " + id);
+    }
 }
