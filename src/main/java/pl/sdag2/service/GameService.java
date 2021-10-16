@@ -21,11 +21,18 @@ public class GameService {
     }
 
     public void create(Game game) {
-        if(game.getId() != null) {
+        if (game.getId() != null) {
             IllegalArgumentException ex = new IllegalArgumentException("Gra o zadanym identyfikatorze już istnieje");
-            log.error("Błąd zapisu gry");
-            throw ex;
+            log.error("Błąd zapisu gry", ex);
         }
         gameRepository.save(game);
+    }
+
+    public void update(Game game) {
+        if (game.getId() == null) {
+            IllegalArgumentException ex = new IllegalArgumentException("Gra o zadanym identyfikatorze nie istnieje");
+            log.error("Nie udało sie edytować gry", ex);
+        }
+        gameRepository.edit(game.getTitle(), game.getPriceFor24h(), game.getId());
     }
 }
