@@ -45,4 +45,13 @@ public class SubscriptionService {
                 subscription.getGame(), subscription.getExpireDate());
         log.info("Pomyślnie edytowano subskrypcje" + subscription.getId());
     }
+
+    public void deleteById(Subscription subscription) {
+        if (subscriptionRepository.findById(subscription.getId()).isEmpty()) {
+            IllegalArgumentException ex = new IllegalArgumentException("Nie znaleziono subskrypcji o zadanym ID");
+            log.error("Błąd usuwania subskrypcji", ex);
+        }
+        subscriptionRepository.deleteById(subscription.getId());
+        log.info("Usunięto subskrypcję o ID: " + subscription.getId());
+    }
 }
