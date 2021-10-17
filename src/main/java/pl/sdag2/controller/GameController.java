@@ -13,7 +13,7 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/game")
 public class GameController {
-    private GameService gameService;
+    private final GameService gameService;
 
     public GameController(GameService gameService) {
         this.gameService = gameService;
@@ -43,4 +43,11 @@ public class GameController {
         gameService.deleteById(id);
         return "redirect:/game/all";
     }
+
+@GetMapping("/{id}")
+    public String getById(@PathVariable Long id, ModelMap modelMap){
+    Game game = gameService.getById(id);
+    modelMap.addAttribute("game",game);
+    return "game/get";
+}
 }
