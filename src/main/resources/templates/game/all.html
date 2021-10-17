@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wsystkie dostępne gry</title>
+</head>
+<body>
+<h1>Dostępne Gry</h1>
+<table>
+    <tr>
+        <th>Tytuł</th>
+        <th>Cena</th>
+    </tr>
+    <tr th:each="game:${games}">
+        <td th:text="${game.title}"></td>
+        <td th:text="${game.price}"></td>
+    </tr>
+</table>
+</body>
+</html>

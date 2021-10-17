@@ -12,7 +12,7 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private BigDecimal priceFor24h;
+    private BigDecimal price;
 
 
 }
