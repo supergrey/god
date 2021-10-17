@@ -19,9 +19,4 @@ public class Wallet {
     private int accountBalance;
     private PayMethod payMethod;
 
-    }
-
-enum PayMethod {
-    CREDIT_CARD, PAYPAL
 }
-
