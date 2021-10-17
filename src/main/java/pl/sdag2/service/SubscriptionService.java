@@ -3,7 +3,6 @@ package pl.sdag2.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.sdag2.entity.Subscription;
-import pl.sdag2.entity.User;
 import pl.sdag2.repository.SubscriptionRepository;
 
 import java.util.List;
@@ -21,6 +20,18 @@ public class SubscriptionService {
         return subscriptionRepository.findAll();
     }
 
+    public void createSubscription(Subscription subscription) {
+        if (subscription.getUser() == null) {
+            IllegalArgumentException ex = new IllegalArgumentException("Nie znaleziono użytkownika");
+            log.error("Błąd tworzenia subskrypcji", ex);
+        } if (subscription.getGame() == null) {
+            IllegalArgumentException ex = new IllegalArgumentException("Gra o zadanym ID nie istnieje");
+            log.error("Błąd tworzenia subskrypcji", ex);
+        }
+            subscriptionRepository.save(subscription);
+            log.info("Pomyślnie uzyskano subskrypcję!" + subscription.getId());
+        }
+    /*
     public void createSubscription(User user, Subscription subscription) {
         if (user.getLogin() == null ) {
             IllegalArgumentException exception = new IllegalArgumentException("Nie znaleziono użytkownika");
@@ -35,30 +46,30 @@ public class SubscriptionService {
         subscriptionRepository.save(subscription);
         log.info("Pomyślnie uzyskano subskrypcję!: " + subscription.getId());
     }
-
-    public void update(Subscription subscription) {
-        if (subscription.getId() == null) {
-            IllegalArgumentException ex = new IllegalArgumentException("Zadana subskrypcja nie istnieje");
-            log.error("Błąd edycji subskrypcji", ex);
+*/
+        public void update (Subscription subscription) {
+            if (subscription.getId() == null) {
+                IllegalArgumentException ex = new IllegalArgumentException("Zadana subskrypcja nie istnieje");
+                log.error("Błąd edycji subskrypcji", ex);
+            }
+            subscriptionRepository.save(subscription);
+            log.info("Pomyślnie edytowano subskrypcje" + subscription.getId());
         }
-        subscriptionRepository.save(subscription);
-        log.info("Pomyślnie edytowano subskrypcje" + subscription.getId());
-    }
 
-    public void deleteById(Long id) {
-        if (subscriptionRepository.findById(id).isEmpty()) {
-            IllegalArgumentException ex = new IllegalArgumentException("Nie znaleziono subskrypcji o zadanym ID");
-            log.error("Błąd usuwania subskrypcji", ex);
+        public void deleteById (Long id) {
+            if (subscriptionRepository.findById(id).isEmpty()) {
+                IllegalArgumentException ex = new IllegalArgumentException("Nie znaleziono subskrypcji o zadanym ID");
+                log.error("Błąd usuwania subskrypcji", ex);
+            }
+            subscriptionRepository.deleteById(id);
+            log.info("Usunięto subskrypcję o ID: " + id);
         }
-        subscriptionRepository.deleteById(id);
-        log.info("Usunięto subskrypcję o ID: " + id);
-    }
 
-    public Subscription getById(Long id) {
-        if (subscriptionRepository.findById(id).isEmpty()) {
-            IllegalArgumentException ex = new IllegalArgumentException("Nie znaleziono subskrypcji o zadanym ID");
-            log.error("Nie znaleziono subskrypcji", ex);
+        public Subscription getById (Long id) {
+            if (subscriptionRepository.findById(id).isEmpty()) {
+                IllegalArgumentException ex = new IllegalArgumentException("Nie znaleziono subskrypcji o zadanym ID");
+                log.error("Nie znaleziono subskrypcji", ex);
+            }
+            return subscriptionRepository.findById(id).get();
         }
-        return subscriptionRepository.findById(id).get();
     }
-}

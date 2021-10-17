@@ -24,7 +24,7 @@ public class WalletService {
     public void create(Wallet wallet) {
         if (wallet.getId() != null) {
             IllegalArgumentException exception = new IllegalArgumentException(
-                    "Nowy portfel nie powinien mieć żadanego identyfikatora");
+                    "Nowy portfel nie powinien mieć żadnego identyfikatora");
             log.error("Błąd zapisywania portfela", exception);
             throw exception;
         }

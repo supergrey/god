@@ -31,8 +31,8 @@ public class SubscriptionController {
     }
 
     @PostMapping("/add")
-    public String postForm(Subscription subscription, User user) {
-        subscriptionService.createSubscription(user, subscription);
+    public String postForm(Subscription subscription) {
+        subscriptionService.createSubscription(subscription);
         return "redirect:/subscription/all";
     }
 
