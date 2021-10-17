@@ -43,6 +43,7 @@ public class GameService {
         }
         gameRepository.deleteById(id);
     }
+
     public Game getById(Long id) {
         if (gameRepository.findById(id).isEmpty()) {
             IllegalArgumentException ex = new IllegalArgumentException("Gra o zadanym identyfikatorze nie istnieje");
