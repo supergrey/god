@@ -17,7 +17,7 @@ public class SubscriptionService {
         this.subscriptionRepository = subscriptionRepository;
     }
 
-    public List<User> getAll() {
+    public List<Subscription> getAll() {
         return subscriptionRepository.findAll();
     }
 
@@ -32,7 +32,7 @@ public class SubscriptionService {
             IllegalArgumentException exception3 = new IllegalArgumentException("Zadana subskrypcja już istnieje");
             log.error("Błąd tworzenia subskrypcji", exception3);
         }
-        subscriptionRepository.save(user);
+        subscriptionRepository.save(subscription);
         log.info("Pomyślnie uzyskano subskrypcję!: " + subscription.getId());
     }
 
