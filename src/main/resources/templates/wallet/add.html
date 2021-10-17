@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tworzenie nowego portfela</title>
+</head>
+<body>
+<h1>Utwórz portfel</h1>
+<form th:object="${wallet}" method="post">
+    <label>Użytkownik: <input type="text" th:field="*{user}"></label>
+    <label>Wartość portfela: <input type="text" th:field="*{accountBalance}"></label>
+    <label>Metoda płatności:
+        <select name="planet" th:field="*{payMethod}">
+        <option th:each="method : ${T(pl.sdag2.entity.PayMethod).values()}"
+                th:value="${method}" th:text="${method}"></option>
+        </select>
+    </label>
+    <input type="submit">
+</form>
+</body>
+</html>

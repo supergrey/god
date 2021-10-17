@@ -29,6 +29,7 @@ public class WalletService {
             throw exception;
         }
         walletRepository.save(wallet);
+        log.info("Utworzono nowy portfel użytkownika: " + wallet.getUser());
     }
 
     public void update(Wallet wallet) {
