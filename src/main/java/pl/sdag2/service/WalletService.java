@@ -2,6 +2,7 @@ package pl.sdag2.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import pl.sdag2.entity.User;
 import pl.sdag2.entity.Wallet;
 import pl.sdag2.repository.WalletRepository;
 
@@ -18,6 +19,36 @@ public class WalletService {
 
     public List<Wallet> getAll() {
         return walletRepository.findAll();
+    }
+
+    public void create(Wallet wallet) {
+        if (wallet.getId() != null) {
+            IllegalArgumentException exception = new IllegalArgumentException(
+                    "Nowy portfel nie powinien mieć żadanego identyfikatora");
+            log.error("Błąd zapisywania portfela", exception);
+            throw exception;
+        }
+        walletRepository.save(wallet);
+    }
+
+    public void update(Wallet wallet) {
+        if (wallet.getId() == null) {
+            IllegalArgumentException exception = new IllegalArgumentException(
+                    "Portfel, który chcesz edytować nie istnieje");
+            log.error("Nie udało sie edytować portfela", exception);
+        }
+        walletRepository.edit(wallet.getUser(), wallet.getAccountBalance(), wallet.getPayMethod(), wallet.getId());
+        log.info("Edytowano portfel użytkownika: " + wallet.getUser());
+    }
+
+    public void deleteById(Long id) {
+        if (walletRepository.findById(id).isEmpty()) {
+            IllegalArgumentException exception = new IllegalArgumentException(
+                    "Portfel o zadanym identyfikatorze nie istnieje");
+            log.error("Błąd usuwania portfela", exception);
+        }
+        walletRepository.deleteById(id);
+        log.info("Usunięto porfel o identyfikatorze: " + id);
     }
 
 }
