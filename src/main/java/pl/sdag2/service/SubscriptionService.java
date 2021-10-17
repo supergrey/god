@@ -35,4 +35,14 @@ public class SubscriptionService {
         subscriptionRepository.save(user);
         log.info("Pomyślnie uzyskano subskrypcję!: " + subscription.getId());
     }
+
+    public void update(Subscription subscription) {
+        if (subscription.getId() == null) {
+            IllegalArgumentException ex = new IllegalArgumentException("Zadana subskrypcja nie istnieje");
+            log.error("Nie znaleziono subskrypcji", ex);
+        }
+        subscriptionRepository.edit(subscription.getId(), subscription.getUser(),
+                subscription.getGame(), subscription.getExpireDate());
+        log.info("Pomyślnie edytowano subskrypcje" + subscription.getId());
+    }
 }
