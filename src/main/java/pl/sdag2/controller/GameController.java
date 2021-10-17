@@ -3,10 +3,7 @@ package pl.sdag2.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.sdag2.entity.Game;
 import pl.sdag2.service.GameService;
 
@@ -35,7 +32,7 @@ private GameService gameService;
     }
 
     @PostMapping("/add")
-    public  String addGame(@ModelAttribute("game") Game game){
+    public  String addGame(Game game){
         log.info("Otrzymano dane: " + game.getTitle() + ", " + game.getPrice());
         gameService.create(game);
         return "redirect:/game/all";
