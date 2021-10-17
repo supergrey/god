@@ -45,6 +45,19 @@ public class UserController {
     public String get(ModelMap modelMap, @PathVariable Long id) {
         User user = userService.getById(id);
         modelMap.addAttribute("user", user);
-        return "user/show";
+        return "/user/show";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String editGetForm(ModelMap modelMap, @PathVariable Long id) {
+        User user = userService.getById(id);
+        modelMap.addAttribute("user", user);
+        return "/user/edit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String editPostForm(User user) {
+        userService.update(user);
+        return "redirect:/user/all";
     }
 }
