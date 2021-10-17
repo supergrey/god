@@ -13,28 +13,34 @@ import java.util.List;
 @Slf4j
 @RequestMapping("/game")
 public class GameController {
-private GameService gameService;
+    private GameService gameService;
 
     public GameController(GameService gameService) {
         this.gameService = gameService;
     }
 
     @GetMapping("/all")
-    public String getAll(ModelMap modelMap){
+    public String getAll(ModelMap modelMap) {
         List<Game> games = gameService.getAll();
-        modelMap.addAttribute("games",games);
+        modelMap.addAttribute("games", games);
         return "game/all";
     }
 
     @GetMapping("/add")
-    public String getForm(@ModelAttribute("game") Game game){
+    public String getForm(@ModelAttribute("game") Game game) {
         return "game/add";
     }
 
     @PostMapping("/add")
-    public  String addGame(Game game){
+    public String add(Game game) {
         log.info("Otrzymano dane: " + game.getTitle() + ", " + game.getPrice());
         gameService.create(game);
+        return "redirect:/game/all";
+    }
+
+    @GetMapping("/{id}/delete")
+    public String deleteById(@PathVariable Long id){
+        gameService.deleteById(id);
         return "redirect:/game/all";
     }
 }
