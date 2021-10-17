@@ -53,4 +53,12 @@ public class SubscriptionService {
         subscriptionRepository.deleteById(id);
         log.info("Usunięto subskrypcję o ID: " + id);
     }
+
+    public Subscription getById(Long id) {
+        if (subscriptionRepository.findById(id).isEmpty()) {
+            IllegalArgumentException ex = new IllegalArgumentException("Nie znaleziono subskrypcji o zadanym ID");
+            log.error("Nie znaleziono subskrypcji", ex);
+        }
+        return subscriptionRepository.findById(id).get();
+    }
 }
