@@ -20,4 +20,13 @@ public class WalletService {
         return walletRepository.findAll();
     }
 
+    public void create(Wallet wallet) {
+        if (wallet.getId() != null) {
+            IllegalArgumentException exception = new IllegalArgumentException(
+                    "Nowy portfel nie powinien mieć żadanego identyfikatora");
+            log.error("Błąd zapisywania portfela", exception);
+            throw exception;
+        }
+        walletRepository.save(wallet);
+    }
 }
