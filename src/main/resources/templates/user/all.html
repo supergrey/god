@@ -6,18 +6,25 @@
 </head>
 <body>
 <h1>Lista użytkowników</h1>
+<div>
+    <a th:href="@{/user/add}">Dodaj nowego użytkownika</a>
+</div>
 <table>
     <tr>
         <th>Id</th>
         <th>Login</th>
         <th>E-mail</th>
         <th>Rodzaj konta</th>
+        <th></th>
+        <th></th>
     </tr>
     <tr th:each="user: ${users}">
         <td th:text="${user.id}"></td>
-        <td th:text="${user.login}"></td>
+        <td><a th:href="@{'/user/' + ${user.id}}" th:text="${user.login}"></a></td>
         <td th:text="${user.email}"></td>
         <td th:text="${user.userType}"></td>
+        <td><a th:href="@{'/user/' + ${user.id} + '/edit'}">Edytuj</a> </td>
+        <td><a th:href="@{'/user/' + ${user.id} + '/delete'}">Usuń</a> </td>
     </tr>
 </table>
 </body>
