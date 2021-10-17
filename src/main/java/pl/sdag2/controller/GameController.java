@@ -39,7 +39,7 @@ public class GameController {
     }
 
     @GetMapping("/{id}/delete")
-    public String deleteById(@PathVariable Long id) {
+    public String deleteById(@PathVariable Long id){
         gameService.deleteById(id);
         return "redirect:/game/all";
     }

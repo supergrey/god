@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj nową subskrypcję</title>
+</head>
+<body>
+<h1>Dodaj nową subskrypcję</h1>
+
+<form th:object="${subscription}" method="post">
+    <div>
+        <label>Tytuł gry: <input type="text" th:field="*{game}"></label>
+    </div>
+    <div>
+        <label>Nazwa użytkownika: <input type="text" th:field="*{user}"></label>
+    </div>
+    <div><input type="submit" value="Dodaj"></div>
+</form>
+</body>
+</html>
