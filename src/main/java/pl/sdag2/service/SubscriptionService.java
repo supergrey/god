@@ -46,12 +46,12 @@ public class SubscriptionService {
         log.info("Pomyślnie edytowano subskrypcje" + subscription.getId());
     }
 
-    public void deleteById(Subscription subscription) {
-        if (subscriptionRepository.findById(subscription.getId()).isEmpty()) {
+    public void deleteById(Long id) {
+        if (subscriptionRepository.findById(id).isEmpty()) {
             IllegalArgumentException ex = new IllegalArgumentException("Nie znaleziono subskrypcji o zadanym ID");
             log.error("Błąd usuwania subskrypcji", ex);
         }
-        subscriptionRepository.deleteById(subscription.getId());
-        log.info("Usunięto subskrypcję o ID: " + subscription.getId());
+        subscriptionRepository.deleteById(id);
+        log.info("Usunięto subskrypcję o ID: " + id);
     }
 }
