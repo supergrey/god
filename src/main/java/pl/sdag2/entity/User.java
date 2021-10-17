@@ -21,3 +21,4 @@ public class User {
     private String email;
     private UserType userType = UserType.NORMAL;
 }
+
