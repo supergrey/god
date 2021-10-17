@@ -33,10 +33,10 @@ public class UserService {
     public void update(User user) {
         if (user.getId() == null) {
             IllegalArgumentException ex = new IllegalArgumentException("Użytkownik o zadanym identyfikatorze nie istnieje");
-            log.error("Nie udało sie edytować użytkownika", ex);
+            log.error("Błąd edycji użytkownika", ex);
         }
-        userRepository.edit(user.getLogin(), user.getPassword(), user.getEmail(), user.getUserType(), user.getId());
-        log.info("Edytowano użytkownika: " + user.getLogin());
+        userRepository.save(user);
+        log.info("Pomyślnie edytowano użytkownika: " + user.getLogin());
     }
 
     public void deleteById(Long id) {
@@ -46,5 +46,13 @@ public class UserService {
         }
         userRepository.deleteById(id);
         log.info("Usunięto użytkownika o identyfikatorze: " + id);
+    }
+
+    public User getById(Long id) {
+        if (userRepository.findById(id).isEmpty()) {
+            IllegalArgumentException ex = new IllegalArgumentException("Użytkownik o zadanym identyfikatorze nie istnieje");
+            log.error("Nie można wyświetlić użytkownika", ex);
+        }
+        return userRepository.findById(id).get();
     }
 }

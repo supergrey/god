@@ -36,9 +36,9 @@ public class WalletService {
         if (wallet.getId() == null) {
             IllegalArgumentException exception = new IllegalArgumentException(
                     "Portfel, który chcesz edytować nie istnieje");
-            log.error("Nie udało sie edytować portfela", exception);
+            log.error("Błąd edycji portfela", exception);
         }
-        walletRepository.edit(wallet.getUser(), wallet.getAccountBalance(), wallet.getPayMethod(), wallet.getId());
+        walletRepository.save(wallet);
         log.info("Edytowano portfel użytkownika: " + wallet.getUser());
     }
 

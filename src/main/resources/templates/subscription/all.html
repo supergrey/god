@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Aktywne subskrycje</title>
+</head>
+<body>
+<h1>Wypożyczone gry</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Tytuł</th>
+        <th>Nazwa użytkownika</th>
+        <th>Data wygaśnięcia subskrypcji</th>
+    </tr>
+    <tr th:each="subscription: ${subscriptions}">
+        <td th:text="${subscription.id}"></td>
+        <td th:text="${subscription.game}"></td>
+        <td th:text="${subscription.user}"></td>
+        <td th:text="${subscription.expireDate}"></td>
+    </tr>
+</table>
+</body>
+</html>

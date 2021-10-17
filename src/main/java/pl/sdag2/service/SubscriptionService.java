@@ -17,7 +17,7 @@ public class SubscriptionService {
         this.subscriptionRepository = subscriptionRepository;
     }
 
-    public List<User> getAll() {
+    public List<Subscription> getAll() {
         return subscriptionRepository.findAll();
     }
 
@@ -32,17 +32,16 @@ public class SubscriptionService {
             IllegalArgumentException exception3 = new IllegalArgumentException("Zadana subskrypcja już istnieje");
             log.error("Błąd tworzenia subskrypcji", exception3);
         }
-        subscriptionRepository.save(user);
+        subscriptionRepository.save(subscription);
         log.info("Pomyślnie uzyskano subskrypcję!: " + subscription.getId());
     }
 
     public void update(Subscription subscription) {
         if (subscription.getId() == null) {
             IllegalArgumentException ex = new IllegalArgumentException("Zadana subskrypcja nie istnieje");
-            log.error("Nie znaleziono subskrypcji", ex);
+            log.error("Błąd edycji subskrypcji", ex);
         }
-        subscriptionRepository.edit(subscription.getId(), subscription.getUser(),
-                subscription.getGame(), subscription.getExpireDate());
+        subscriptionRepository.save(subscription);
         log.info("Pomyślnie edytowano subskrypcje" + subscription.getId());
     }
 
@@ -53,5 +52,13 @@ public class SubscriptionService {
         }
         subscriptionRepository.deleteById(id);
         log.info("Usunięto subskrypcję o ID: " + id);
+    }
+
+    public Subscription getById(Long id) {
+        if (subscriptionRepository.findById(id).isEmpty()) {
+            IllegalArgumentException ex = new IllegalArgumentException("Nie znaleziono subskrypcji o zadanym ID");
+            log.error("Nie znaleziono subskrypcji", ex);
+        }
+        return subscriptionRepository.findById(id).get();
     }
 }

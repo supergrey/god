@@ -40,4 +40,11 @@ public class UserController {
         userService.deleteById(id);
         return "redirect:/user/all";
     }
+
+    @GetMapping("/{id}")
+    public String get(ModelMap modelMap, @PathVariable Long id) {
+        User user = userService.getById(id);
+        modelMap.addAttribute("user", user);
+        return "user/show";
+    }
 }
