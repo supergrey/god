@@ -47,4 +47,12 @@ public class UserService {
         userRepository.deleteById(id);
         log.info("Usunięto użytkownika o identyfikatorze: " + id);
     }
+
+    public User getById(Long id) {
+        if (userRepository.findById(id).isEmpty()) {
+            IllegalArgumentException ex = new IllegalArgumentException("Użytkownik o zadanym identyfikatorze nie istnieje");
+            log.error("Nie można wyświetlić użytkownika", ex);
+        }
+        return userRepository.findById(id).get();
+    }
 }
