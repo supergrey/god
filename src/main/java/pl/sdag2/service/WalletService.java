@@ -2,7 +2,6 @@ package pl.sdag2.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import pl.sdag2.entity.User;
 import pl.sdag2.entity.Wallet;
 import pl.sdag2.repository.WalletRepository;
 
@@ -50,6 +49,15 @@ public class WalletService {
         }
         walletRepository.deleteById(id);
         log.info("Usunięto porfel o identyfikatorze: " + id);
+    }
+
+    public Wallet getById(Long id) {
+        if (walletRepository.findById(id).isEmpty()) {
+            IllegalArgumentException exception = new IllegalArgumentException(
+                    "Portfel o zadanym identyfikatorze nie istnieje");
+            log.error("Błąd pobierania informacji o portfelu.", exception);
+        }
+        return walletRepository.getById(id);
     }
 
 }

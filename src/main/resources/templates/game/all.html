@@ -8,10 +8,12 @@
 <h1>Dostępne Gry</h1>
 <table>
     <tr>
+        <th>Id</th>
         <th>Tytuł</th>
         <th>Cena</th>
     </tr>
     <tr th:each="game:${games}">
+        <td th:text="${game.id}"></td>
         <td th:text="${game.title}"></td>
         <td th:text="${game.price}"></td>
     </tr>
