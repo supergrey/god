@@ -8,7 +8,4 @@ import pl.sdag2.entity.UserType;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    @Modifying
-    @Query("update User u set u.login = ?1, u.password = ?2, u.email = ?3, u.userType = ?4 where u.id = ?5")
-    void edit(String login, String password, String email, UserType userType, Long id);
 }
