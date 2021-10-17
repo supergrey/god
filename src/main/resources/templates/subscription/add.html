@@ -6,17 +6,15 @@
 </head>
 <body>
 <h1>Dodaj nową subskrypcję</h1>
-<form th:object="subscription" method="post">
+
+<form th:object="${subscription}" method="post">
     <div>
-        <label>ID subskrypcji: <input type="number" th:keytype="*{Long}"></label>
+        <label>Tytuł gry: <input type="text" th:field="*{game}"></label>
     </div>
     <div>
-        <label>Tytuł gry: <input type="text" th:field="*{String}"></label>
+        <label>Nazwa użytkownika: <input type="text" th:field="*{user}"></label>
     </div>
-    <div>
-        <label>Nazwa użytkownika: <input type="text" th:field="*{String}"></label>
-    </div>
-    <div><input type="submit"></div>
+    <div><input type="submit" value="Dodaj"></div>
 </form>
 </body>
 </html>
