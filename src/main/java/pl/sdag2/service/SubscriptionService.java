@@ -39,10 +39,9 @@ public class SubscriptionService {
     public void update(Subscription subscription) {
         if (subscription.getId() == null) {
             IllegalArgumentException ex = new IllegalArgumentException("Zadana subskrypcja nie istnieje");
-            log.error("Nie znaleziono subskrypcji", ex);
+            log.error("Błąd edycji subskrypcji", ex);
         }
-        subscriptionRepository.edit(subscription.getId(), subscription.getUser(),
-                subscription.getGame(), subscription.getExpireDate());
+        subscriptionRepository.save(subscription);
         log.info("Pomyślnie edytowano subskrypcje" + subscription.getId());
     }
 
