@@ -29,4 +29,14 @@ public class WalletService {
         }
         walletRepository.save(wallet);
     }
+
+    public void deleteById(Long id) {
+        if (walletRepository.findById(id).isEmpty()) {
+            IllegalArgumentException ex = new IllegalArgumentException("Portfel o zadanym identyfikatorze nie istnieje");
+            log.error("Błąd usuwania portfela", ex);
+        }
+        walletRepository.deleteById(id);
+        log.info("Usunięto porfel o identyfikatorze: " + id);
+    }
+
 }
