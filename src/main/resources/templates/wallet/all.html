@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista wszystkich portfeli</title>
+</head>
+<body>
+<h1>Lista portfeli</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Użytkownik</th>
+        <th>Wartość portfela</th>
+        <th>Metoda płatności</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="wallet : ${wallets}">
+        <td th:text="${wallet.user}"></td>
+        <td th:text="${wallet.accountBalance}"></td>
+        <td th:text="${wallet.payMethod}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
