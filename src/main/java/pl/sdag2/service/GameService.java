@@ -33,7 +33,7 @@ public class GameService {
             IllegalArgumentException ex = new IllegalArgumentException("Gra o zadanym identyfikatorze nie istnieje");
             log.error("Nie udało sie edytować gry", ex);
         }
-        gameRepository.edit(game.getTitle(), game.getPriceFor24h(), game.getId());
+        gameRepository.edit(game.getTitle(), game.getPrice(), game.getId());
     }
 
     public void deleteById(Long id) {
