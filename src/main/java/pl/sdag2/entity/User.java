@@ -2,6 +2,7 @@ package pl.sdag2.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,5 +19,5 @@ public class User {
     private String login;
     private String password;
     private String email;
-    private UserType userType;
+    private UserType userType = UserType.NORMAL;
 }
