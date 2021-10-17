@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wyświetl użytkownika</title>
+</head>
+<body>
+<h1>Użytkonik o id <strong th:text="${user.id}"></strong></h1>
+<ul>
+    <li>Login: <strong th:text="${user.login}"></strong></li>
+    <li>E-mail: <strong th:text="${user.email}"></strong></li>
+    <li>Rodzaj konta: <strong th:text="${user.userType}"></strong></li>
+</ul>
+</body>
+</html>
