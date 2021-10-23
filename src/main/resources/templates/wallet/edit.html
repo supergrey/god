@@ -13,7 +13,7 @@
     <div>
         <label>Metoda płatności:
         <select name="payMethod" th:field="*{payMethod}">
-            <option th:each="method : ${T(pl.sdag2.entity.PayMethod).values()}"
+            <option th:each="method : ${T(pl.sdag2.entity.PayMethodEnum).values()}"
                     th:value="${method}" th:text="${method}"></option>
         </select>
         </label>

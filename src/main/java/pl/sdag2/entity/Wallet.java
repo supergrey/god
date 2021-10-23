@@ -17,6 +17,6 @@ public class Wallet {
     private Long id;
     private String user;
     private int accountBalance;
-    private PayMethod payMethod;
+    private PayMethodEnum payMethod;
 
 }

@@ -1,5 +1,5 @@
 package pl.sdag2.entity;
 
-public enum PayMethod {
+public enum PayMethodEnum {
     CREDIT_CARD, PAYPAL
 }
