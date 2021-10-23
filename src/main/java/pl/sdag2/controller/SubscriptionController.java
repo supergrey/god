@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import pl.sdag2.entity.Subscription;
+import pl.sdag2.entity.User;
 import pl.sdag2.service.SubscriptionService;
 
 import java.util.List;
@@ -45,6 +46,19 @@ public class SubscriptionController {
     public String get(ModelMap modelMap, @PathVariable Long id) {
         Subscription subscription = subscriptionService.getById(id);
         modelMap.addAttribute("subscription", subscription);
-        return "subscription/show";
+        return "/subscription/show";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String editGetForm(ModelMap modelMap, @PathVariable Long id) {
+        Subscription subscription = subscriptionService.getById(id);
+        modelMap.addAttribute("subscription", subscription);
+        return "/subscription/edit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String editPostForm(Subscription subscription) {
+        subscriptionService.update(subscription);
+        return "redirect:/subscription/all";
     }
 }
