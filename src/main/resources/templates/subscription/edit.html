@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Edycja istniejącej subskrypcji</title>
+</head>
+<body>
+<h1>Edycja subskrypcji o ID: <strong th:text="${subscription.id}"></strong> </h1>
+<form th:object="${subscription}" method="post">
+  <div>
+    <label>Nazwa użytkownika: <input type="text" th:field="*{user}" th:value="${subscription.user}"></label>
+  </div>
+  <div>
+    <label>Wybrany tytuł: <input type="text" th:field="*{game}" th:value="${subscription.game}"></label>
+  </div>
+  <div>
+    <label>Przedłuż czas subskrypcji: <input type="number" th:field="*{expireDate}" th:value="${subscription.expireDate}"></label>
+  </div>
+  <div><input type="submit"></div>
+</form>
+</body>
+</html>

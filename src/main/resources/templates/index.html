@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Strona tytułowa</title>
-</head>
+<head th:replace="fragments :: myHead(title = 'Strona główna')"></head>
 <body>
+<div th:replace="fragments :: navBar"></div>
 <h1>GAMES ON DEMAND</h1>
 <ul>
     <li><a th:href="@{/game/all}">Wszystkie gry</a></li>
@@ -13,5 +11,7 @@
     <li><a th:href="@{/wallet/all}">Portfele</a></li>
 
 </ul>
+<footer th:replace="fragments :: btFooter"></footer>
+<script th:replace="fragments :: btScript"></script>
 </body>
 </html>
