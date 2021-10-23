@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import pl.sdag2.entity.Subscription;
-import pl.sdag2.entity.User;
 import pl.sdag2.service.SubscriptionService;
 
 import java.util.List;
