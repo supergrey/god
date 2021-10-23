@@ -12,5 +12,8 @@
     <li>E-mail: <strong th:text="${user.email}"></strong></li>
     <li>Rodzaj konta: <strong th:text="${user.userType}"></strong></li>
 </ul>
+<div><a th:href="@{'/user/' + ${user.id} + '/edit'}">Edytuj</a> </div>
+<div><a th:href="@{'/user/' + ${user.id} + '/delete'}">Usuń</a> </div>
+<a th:href="@{/}">Powrót na stronę główną</a>
 </body>
 </html>
