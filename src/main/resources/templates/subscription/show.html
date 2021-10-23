@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wyświetl subskrypcję</title>
+</head>
+<body>
+<h1>ID subskrypcji: <strong th:number="${subscription.id}"></strong> </h1>
+<ul>
+    <li>Tytuł: <strong th:text="${subscription.game}"></strong></li>
+    <li>Nazwa użytkownika: <strong th:text="${subscription.user}"></strong></li>
+    <li>Data wygaśnięcia: <strong th:date="${subscription.expireDate}"></strong></li>
+</ul>
+</body>
+</html>
