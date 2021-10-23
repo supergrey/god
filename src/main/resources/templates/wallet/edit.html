@@ -19,10 +19,10 @@
         </label>
     </div>
     <div>
-        <label>Login: <input type="hidden" th:value="${wallet.user}" th:field="*{user}"></label>
+        <input type="hidden" th:value="${wallet.user}" th:field="*{user}">
     </div>
     <div>
-        <label>Hasło: <input type="hidden" th:value="${wallet.accountBalance}" th:field="*{accountBalance}"></label>
+        <input type="hidden" th:value="${wallet.accountBalance}" th:field="*{accountBalance}">
     </div>
     <div><input type="submit"></div>
 </form>

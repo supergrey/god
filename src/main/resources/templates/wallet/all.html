@@ -16,11 +16,14 @@
     </thead>
     <tbody>
     <tr th:each="wallet : ${wallets}">
-        <td th:text="${wallet.user}"></td>
+        <td> <a th:href="@{'/wallet/' + ${wallet.id}}" th:text="${wallet.user}"></a></td>
         <td th:text="${wallet.accountBalance}"></td>
         <td th:text="${wallet.payMethod}"></td>
+        <td><a th:href="@{'/wallet/' + ${wallet.id} + '/edit'}">Edytuj</a> </td>
+        <td><a th:href="@{'/wallet/' + ${wallet.id} + '/delete'}">Usuń</a> </td>
     </tr>
     </tbody>
+
 </table>
 <a th:href="@{/}">Powrót na stronę główną</a>
 </body>

@@ -56,4 +56,11 @@ public class WalletController {
         walletService.update(wallet);
         return "redirect:/wallet/all";
     }
+
+    @GetMapping("/{id}/delete")
+    public String deleteById(@PathVariable Long id){
+        walletService.deleteById(id);
+        return "redirect:/wallet/all";
+    }
+
 }
