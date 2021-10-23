@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: myHead(title = 'Dodaj użytkownika')"></head>
+<body>
+<div th:replace="fragments :: navBar"></div>
+
+<div class="container">
+  <h1>Dodaj lub edytuj użytkownika</h1>
+  <form class="row g-3" th:object="${user}" method="post">
+    <div class="col-md-6">
+      <label for="inputAddress" class="form-label">Nazwa użytkownika</label>
+      <input th:field="*{login}" type="text" class="form-control" id="inputAddress">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Hasło</label>
+      <input th:field="*{password}" type="password" class="form-control" id="inputPassword4">
+    </div>
+    <div class="col-md-9">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input th:field="*{email}" type="email" class="form-control" id="inputEmail4">
+    </div>
+
+    <div class="col-md-3">
+      <label for="inputZip" class="form-label">Stan konta</label>
+      <input th:field="*{wallet}" type="number" step="0.01" class="form-control" id="inputZip">
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-dark">Zatwierdź</button>
+    </div>
+  </form>
+</div>
+
+<footer th:replace="fragments :: btFooter"></footer>
+<script th:replace="fragments :: btScript"></script>
+</body>
+</html>

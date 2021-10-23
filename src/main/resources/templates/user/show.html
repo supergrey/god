@@ -3,16 +3,21 @@
 <head th:replace="fragments :: myHead(title = 'Profil')"></head>
 <body>
 <div th:replace="fragments :: navBar"></div>
-<h1>Użytkownik o id <strong th:text="${user.id}"></strong></h1>
-<ul>
-    <li>Login: <strong th:text="${user.login}"></strong></li>
-    <li>Kwota w portfelu: <strong th:text="${user.wallet}"></strong></li>
-    <li>E-mail: <strong th:text="${user.email}"></strong></li>
-    <li>Rodzaj konta: <strong th:text="${user.userType}"></strong></li>
-</ul>
-<div><a th:href="@{'/user/' + ${user.id} + '/edit'}">Edytuj</a> </div>
-<div><a th:href="@{'/user/' + ${user.id} + '/delete'}">Usuń</a> </div>
-<a th:href="@{/}">Powrót na stronę główną</a>
+<div class="container"><h1>Użytkownik o id <strong th:text="${user.id}"></strong></h1>
+    <ul class="list-group">
+        <li class="list-group-item">Login: <strong th:text="${user.login}"></strong></li>
+        <li class="list-group-item">Stan konta: <strong th:text="${user.wallet}"></strong></li>
+        <li class="list-group-item">Email: <strong th:text="${user.email}"></strong></li>
+        <li class="list-group-item">Rodzaj konta: <strong th:text="${user.userType}"></strong></li>
+    </ul>
+    <label class="btn-group">
+        <a class="btn btn-outline-dark" th:href="@{'/user/' + ${user.id} + '/edit'}">Edytuj</a>
+        <a class="btn btn-outline-dark" th:href="@{'/user/' + ${user.id} + '/delete'}">Usuń</a>
+        <a class="btn btn-outline-dark" th:href="@{'/user/all'}">Powrót do listy użytkowników</a>
+    </label>
+</div>
+
+
 <footer th:replace="fragments :: btFooter"></footer>
 <script th:replace="fragments :: btScript"></script>
 </body>

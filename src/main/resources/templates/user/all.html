@@ -3,31 +3,35 @@
 <head th:replace="fragments :: myHead(title = 'Lista użytkowników')"></head>
 <body>
 <div th:replace="fragments :: navBar"></div>
-<h1>Lista użytkowników</h1>
-<div>
-    <a th:href="@{/user/add}">Dodaj nowego użytkownika</a>
-</div>
-<table>
+<div class="container"><h1>Lista użytkowników</h1>
+  <div>
+    <a class="btn btn-outline-dark" th:href="@{/user/add}">Dodaj nowego użytkownika</a>
+  </div>
+  <table class="table">
+    <thead>
     <tr>
-        <th>Id</th>
-        <th>Login</th>
-        <th>Kwota w portfelu</th>
-        <th>E-mail</th>
-        <th>Rodzaj konta</th>
-        <th></th>
-        <th></th>
+      <th scope="col">Id</th>
+      <th scope="col">Login</th>
+      <th scope="col">Stan konta</th>
+      <th scope="col">Email</th>
+      <th scope="col">Rodzaj konta</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
+    </thead>
+    <tbody>
     <tr th:each="user: ${users}">
-        <td th:text="${user.id}"></td>
-        <td><a th:href="@{'/user/' + ${user.id}}" th:text="${user.login}"></a></td>
-        <td th:text="${user.wallet}"></td>
-        <td th:text="${user.email}"></td>
-        <td th:text="${user.userType}"></td>
-        <td><a th:href="@{'/user/' + ${user.id} + '/edit'}">Edytuj</a> </td>
-        <td><a th:href="@{'/user/' + ${user.id} + '/delete'}">Usuń</a> </td>
+      <th scope="row" th:text="${user.id}"></th>
+      <td><a th:href="@{'/user/' + ${user.id}}" th:text="${user.login}"></a></td>
+      <td th:text="${user.wallet}"></td>
+      <td th:text="${user.email}"></td>
+      <td th:text="${user.userType}"></td>
+      <td><a class="btn btn-outline-dark" th:href="@{'/user/' + ${user.id} + '/edit'}">Edytuj</a></td>
+      <td><a class="btn btn-outline-dark" th:href="@{'/user/' + ${user.id} + '/delete'}">Usuń</a></td>
     </tr>
-</table>
-<a th:href="@{/}">Powrót na stronę główną</a>
+    </tbody>
+  </table>
+</div>
 <footer th:replace="fragments :: btFooter"></footer>
 <script th:replace="fragments :: btScript"></script>
 </body>

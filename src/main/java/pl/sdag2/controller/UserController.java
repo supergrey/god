@@ -26,7 +26,7 @@ public class UserController {
 
     @GetMapping("/add")
     public String getForm(@ModelAttribute("user") User user) {
-        return "/user/add";
+        return "user/form";
     }
 
     @PostMapping("/add")
@@ -52,7 +52,7 @@ public class UserController {
     public String editGetForm(ModelMap modelMap, @PathVariable Long id) {
         User user = userService.getById(id);
         modelMap.addAttribute("user", user);
-        return "/user/edit";
+        return "user/form";
     }
 
     @PostMapping("/{id}/edit")
