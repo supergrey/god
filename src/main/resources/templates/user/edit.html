@@ -16,6 +16,9 @@
     <div>
         <label>E-mail: <input type="text" th:value="${user.email}" th:field="*{email}"></label>
     </div>
+    <div>
+        <label>Wartość portfela: <input type="number" step="0.01" th:field="*{wallet}"></label>
+    </div>
     <div><input type="submit"></div>
 </form>
 </body>
