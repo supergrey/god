@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Wsystkie dostępne gry</title>
-</head>
+<head th:replace="fragments :: myHead(title = 'Lista gier')"></head>
 <body>
+<div th:replace="fragments :: navBar"></div>
 <h1>Dostępne Gry</h1>
 <a th:href="@{/game/add}">Dodaj nową grę</a>
 <table>
@@ -24,5 +22,7 @@
     </tr>
 </table>
 <a th:href="@{/}">Powrót na stronę główną</a>
+<footer th:replace="fragments :: btFooter"></footer>
+<script th:replace="fragments :: btScript"></script>
 </body>
 </html>

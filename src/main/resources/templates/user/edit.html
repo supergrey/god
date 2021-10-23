@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Edycja użytkownika</title>
-</head>
+<head th:replace="fragments :: myHead(title = 'Edycja użytkownika')"></head>
 <body>
+<div th:replace="fragments :: navBar"></div>
 <h1>Edycja użytkownika o id <strong th:text="${user.id}"></strong></h1>
 <form th:object="${user}" method="post">
     <div>
@@ -21,5 +19,7 @@
     </div>
     <div><input type="submit"></div>
 </form>
+<footer th:replace="fragments :: btFooter"></footer>
+<script th:replace="fragments :: btScript"></script>
 </body>
 </html>

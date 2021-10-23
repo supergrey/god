@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Stwórz nowego użytkownika</title>
-</head>
+<head th:replace="fragments :: myHead(title = 'Dodaj użytkownika')"></head>
 <body>
+<div th:replace="fragments :: navBar"></div>
 <h1>Stwórz nowego użytkownika</h1>
 <form th:object="${user}" method="post">
     <div>
@@ -21,5 +19,7 @@
     </div>
     <div><input type="submit"></div>
 </form>
+<footer th:replace="fragments :: btFooter"></footer>
+<script th:replace="fragments :: btScript"></script>
 </body>
 </html>

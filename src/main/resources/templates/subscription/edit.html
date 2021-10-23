@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head>
-  <meta charset="UTF-8">
-  <title>Edycja istniejącej subskrypcji</title>
-</head>
+<head th:replace="fragments :: myHead(title = 'Edycja subskrypcji')"></head>
 <body>
+<div th:replace="fragments :: navBar"></div>
 <h1>Edycja subskrypcji o ID: <strong th:text="${subscription.id}"></strong> </h1>
 <form th:object="${subscription}" method="post">
   <div>
@@ -18,5 +16,7 @@
   </div>
   <div><input type="submit"></div>
 </form>
+<footer th:replace="fragments :: btFooter"></footer>
+<script th:replace="fragments :: btScript"></script>
 </body>
 </html>

@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title th:text="'GOD - ' + ${game.title}">GOD - </title>
-</head>
+<head th:replace="fragments :: myHead(title = 'Gra')"></head>
 <body>
+<div th:replace="fragments :: navBar"></div>
 <div th:object="${game}">
     <h1 th:text="*{title}"></h1>
     <p> Cena: <span th:text="*{price}"></span></p>
@@ -16,5 +14,7 @@
     <a th:href="@{'/game/' + ${game.id} + '/delete'}">Usuń</a>
 </div>
 <a th:href="@{/}">Powrót na stronę główną</a>
+<footer th:replace="fragments :: btFooter"></footer>
+<script th:replace="fragments :: btScript"></script>
 </body>
 </html>

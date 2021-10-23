@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Formularz dodawania gry do katalogu</title>
-</head>
+<head th:replace="fragments :: myHead(title = 'Dodaj grę')"></head>
 <body>
+<div th:replace="fragments :: navBar"></div>
 <h1>Dodaj lub edytuj grę</h1>
 <!--<h2 th:text="${#request.getRequestURI()}"></h2>-->
 <form method="post" th:object="${game}">
@@ -12,5 +10,7 @@
     <label>Cena: <input type="number" step="0.01" th:field="*{price}"></label>
     <input type="submit">
 </form>
+<footer th:replace="fragments :: btFooter"></footer>
+<script th:replace="fragments :: btScript"></script>
 </body>
 </html>

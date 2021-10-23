@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Dodaj nową subskrypcję</title>
-</head>
+<head th:replace="fragments :: myHead(title = 'Dodaj subskrypcję')"></head>
 <body>
+<div th:replace="fragments :: navBar"></div>
 <h1>Dodaj nową subskrypcję</h1>
 
 <form th:object="${subscription}" method="post">
@@ -16,5 +14,7 @@
     </div>
     <div><input type="submit" value="Dodaj"></div>
 </form>
+<footer th:replace="fragments :: btFooter"></footer>
+<script th:replace="fragments :: btScript"></script>
 </body>
 </html>

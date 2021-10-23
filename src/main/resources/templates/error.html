@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Nie ma takiego adresu</title>
-</head>
+<head th:replace="fragments :: myHead(title = 'Error')"></head>
 <body>
-<h1>Nie ma takiego adresu</h1>
-<a th:href="@{/}">Powrót na stronę główną</a>
+<div th:replace="fragments :: navBar"></div>
+<div class="container">
+  <h1>Nie ma takiego adresu</h1>
+  <a th:href="@{/}">Powrót na stronę główną</a>
+</div>
+<footer th:replace="fragments :: btFooter"></footer>
+<script th:replace="fragments :: btScript"></script>
 </body>
 </html>

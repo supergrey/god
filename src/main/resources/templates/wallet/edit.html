@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Edytowanie istniejącego portfela</title>
-</head>
+<<head th:replace="fragments :: myHead(title = 'Edycja portfela')"></head>
 <body>
+<div th:replace="fragments :: navBar"></div>
 <h1>Edycja portfela użytkownika <strong th:text="${wallet.user}"></strong></h1>
 <form th:object="${wallet}" method="post">
     <div>
@@ -26,5 +24,7 @@
     </div>
     <div><input type="submit"></div>
 </form>
+<footer th:replace="fragments :: btFooter"></footer>
+<script th:replace="fragments :: btScript"></script>
 </body>
 </html>

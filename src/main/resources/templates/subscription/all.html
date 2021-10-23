@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Aktywne subskrycje</title>
-</head>
+<head th:replace="fragments :: myHead(title = 'Wszystkie subskrypcje')"></head>
 <body>
+<div th:replace="fragments :: navBar"></div>
 <h1>Wypożyczone gry</h1>
 <a th:href="@{/subscription/add}">Dodaj subskrypcję</a>
 <table>
@@ -24,5 +22,7 @@
     </tr>
 </table>
 <a th:href="@{/}">Powrót na stronę główną</a>
+<footer th:replace="fragments :: btFooter"></footer>
+<script th:replace="fragments :: btScript"></script>
 </body>
 </html>
