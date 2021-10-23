@@ -9,7 +9,7 @@
 </head>
 <body>
 <div th:fragment="navBar">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:with="siteURI=${#request.getRequestURI()}">
     <div class="container">
       <img class="navbar-brand" th:src="@{/images/logo.png}" width="80" alt="logo">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -19,16 +19,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" th:href="@{/}">Stona główna</a>
+            <a class="nav-link " th:classappend="${siteURI == '/' ? 'active' : ''}" th:href="@{/}">Stona główna</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/game/all}">Gry</a>
+            <a class="nav-link" th:classappend="${siteURI == '/game/all' ? 'active' : ''}" th:href="@{/game/all}">Gry</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/user/all}">Użytkownicy</a>
+            <a class="nav-link" th:classappend="${siteURI == '/user/all' ? 'active' : ''}" th:href="@{/user/all}">Użytkownicy</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/subscription/all}">Subskrypcje</a>
+            <a class="nav-link" th:classappend="${siteURI == '/subscription/all' ? 'active' : ''}" th:href="@{/subscription/all}">Subskrypcje</a>
           </li>
 
         </ul>
