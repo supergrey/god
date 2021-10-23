@@ -3,17 +3,18 @@
 <head th:replace="fragments :: myHead(title = 'Gra')"></head>
 <body>
 <div th:replace="fragments :: navBar"></div>
-<div th:object="${game}">
-    <h1 th:text="*{title}"></h1>
-    <p> Cena: <span th:text="*{price}"></span></p>
+
+<div class="container">
+  <div th:object="${game}">
+    <h1 class="h1" th:text="*{title}"></h1>
+    <div> Cena: <span th:text="*{price}"></span></div>
+  </div>
+  <div>
+    <a class="btn btn-primary" th:href="@{'/game/' + ${game.id} + '/edit'}" role="button">Edytuj</a>
+   <a class="btn btn-secondary" th:href="@{'/game/' + ${game.id} + '/delete'}" role="button">Usuń</a>
+  </div>
+  <a class="btn btn-link" th:href="@{/}" role="button">Powrót na stronę główną</a>
 </div>
-<div>
-    <a th:href="@{'/game/' + ${game.id} + '/edit'}">Edytuj</a>
-</div>
-<div>
-    <a th:href="@{'/game/' + ${game.id} + '/delete'}">Usuń</a>
-</div>
-<a th:href="@{/}">Powrót na stronę główną</a>
 <footer th:replace="fragments :: btFooter"></footer>
 <script th:replace="fragments :: btScript"></script>
 </body>
