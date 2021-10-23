@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import pl.sdag2.entity.Game;
+import pl.sdag2.entity.User;
 import pl.sdag2.entity.Wallet;
 import pl.sdag2.service.WalletService;
 
@@ -41,5 +42,18 @@ public class WalletController {
         Wallet wallet = walletService.getById(id);
         modelMap.addAttribute("wallet", wallet);
         return "wallet/get";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String editSingleGet(ModelMap modelMap, @PathVariable Long id) {
+        Wallet wallet = walletService.getById(id);
+        modelMap.addAttribute("wallet", wallet);
+        return "/wallet/edit";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String editSinglePost(Wallet wallet) {
+        walletService.update(wallet);
+        return "redirect:/wallet/all";
     }
 }

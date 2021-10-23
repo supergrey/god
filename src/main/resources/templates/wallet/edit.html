@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytowanie istniejącego portfela</title>
+</head>
+<body>
+<h1>Edycja portfela użytkownika <strong th:text="${wallet.user}"></strong></h1>
+<form th:object="${wallet}" method="post">
+    <div>
+        <h2>Wartość portfela: <strong th:text="${wallet.accountBalance}"></strong></h2>
+    </div>
+    <div>
+        <label>Metoda płatności:
+        <select name="payMethod" th:field="*{payMethod}">
+            <option th:each="method : ${T(pl.sdag2.entity.PayMethod).values()}"
+                    th:value="${method}" th:text="${method}"></option>
+        </select>
+        </label>
+    </div>
+    <div>
+        <label>Login: <input type="hidden" th:value="${wallet.user}" th:field="*{user}"></label>
+    </div>
+    <div>
+        <label>Hasło: <input type="hidden" th:value="${wallet.accountBalance}" th:field="*{accountBalance}"></label>
+    </div>
+    <div><input type="submit"></div>
+</form>
+</body>
+</html>

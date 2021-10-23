@@ -10,7 +10,7 @@
     <label>Użytkownik: <input type="text" th:field="*{user}"></label>
     <label>Wartość portfela: <input type="text" th:field="*{accountBalance}"></label>
     <label>Metoda płatności:
-        <select name="planet" th:field="*{payMethod}">
+        <select name="payMethod" th:field="*{payMethod}">
         <option th:each="method : ${T(pl.sdag2.entity.PayMethod).values()}"
                 th:value="${method}" th:text="${method}"></option>
         </select>
