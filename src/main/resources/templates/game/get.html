@@ -9,5 +9,12 @@
     <h1 th:text="*{title}"></h1>
     <p> Cena: <span th:text="*{price}"></span></p>
 </div>
+<div>
+    <a th:href="@{'/game/' + ${game.id} + '/edit'}">Edytuj</a>
+</div>
+<div>
+    <a th:href="@{'/game/' + ${game.id} + '/delete'}">Usuń</a>
+</div>
+<a th:href="@{/}">Powrót na stronę główną</a>
 </body>
 </html>
