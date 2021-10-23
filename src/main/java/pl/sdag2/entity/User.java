@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 @Entity
 @Setter
@@ -20,5 +21,6 @@ public class User {
     private String password;
     private String email;
     private UserType userType = UserType.NORMAL;
+    private BigDecimal wallet;
 }
 
