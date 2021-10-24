@@ -23,7 +23,7 @@
     <tr th:each="user: ${users}">
       <th scope="row" th:text="${user.id}"></th>
       <td><a th:href="@{'/user/' + ${user.id}}" th:text="${user.login}"></a></td>
-      <td th:text="${user.wallet}"></td>
+      <td th:text="${user.wallet.accountBalance}"></td>
       <td th:text="${user.email}"></td>
       <td th:text="${user.userType}"></td>
       <td><a class="btn btn-outline-dark" th:href="@{'/user/' + ${user.id} + '/edit'}">Edytuj</a></td>
