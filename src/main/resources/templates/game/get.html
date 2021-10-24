@@ -7,13 +7,15 @@
 <div class="container">
   <div th:object="${game}">
     <h1 class="h1" th:text="*{title}"></h1>
-    <div> Cena: <span th:text="*{price}"></span></div>
+    <ul class="list-group">
+    <li class="list-group-item"> Cena: <span th:text="*{price}"></span></li>
+    </ul>
   </div>
   <div class="btn-group">
-    <a class="btn btn-primary" th:href="@{'/game/' + ${game.id} + '/edit'}" role="button">Edytuj</a>
-   <a class="btn btn-secondary" th:href="@{'/game/' + ${game.id} + '/delete'}" role="button">Usuń</a>
+    <a class="btn btn-outline-dark" th:href="@{'/game/' + ${game.id} + '/edit'}" role="button">Edytuj</a>
+   <a class="btn btn-outline-dark" th:href="@{'/game/' + ${game.id} + '/delete'}" role="button">Usuń</a>
 
-  <a class="btn btn-primary" th:href="@{/game/all}" role="button">Powrót do listy gier</a>
+  <a class="btn btn-outline-dark" th:href="@{/game/all}" role="button">Powrót do listy gier</a>
   </div>
 </div>
 <footer th:replace="fragments :: btFooter"></footer>

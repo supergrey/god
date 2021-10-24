@@ -6,21 +6,25 @@
 <div class="container">
     <h1>Dostępne Gry</h1>
     <a class="btn btn-primary" th:href="@{/game/add}">Dodaj nową grę</a>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Tytuł</th>
-            <th>Cena</th>
-            <th></th>
-            <th></th>
-        </tr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tytuł</th>
+                <th>Cena</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
         <tr th:each="game:${games}">
             <td th:text="${game.id}"></td>
             <td><a th:href="@{'/game/' + ${game.id}}" th:text="${game.title}"></a></td>
             <td th:text="${game.price}"></td>
-            <td><a class="btn btn-primary" th:href="@{'/game/' + ${game.id} + '/edit'}">Edytuj</a></td>
-            <td><a class="btn btn-secondary" th:href="@{'/game/' + ${game.id} + '/delete'}">Usuń</a></td>
+            <td><a class="btn btn-outline-dark" th:href="@{'/game/' + ${game.id} + '/edit'}">Edytuj</a></td>
+            <td><a class="btn btn-outline-dark" th:href="@{'/game/' + ${game.id} + '/delete'}">Usuń</a></td>
         </tr>
+        </tbody>
     </table>
     <a th:href="@{/}">Powrót na stronę główną</a>
 </div><footer th:replace="fragments :: btFooter"></footer>
