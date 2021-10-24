@@ -3,26 +3,27 @@
 <head th:replace="fragments :: myHead(title = 'Lista gier')"></head>
 <body>
 <div th:replace="fragments :: navBar"></div>
-<h1>Dostępne Gry</h1>
-<a th:href="@{/game/add}">Dodaj nową grę</a>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Tytuł</th>
-        <th>Cena</th>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr th:each="game:${games}">
-        <td th:text="${game.id}"></td>
-        <td><a th:href="@{'/game/' + ${game.id}}" th:text="${game.title}"></a></td>
-        <td th:text="${game.price}"></td>
-        <td><a th:href="@{'/game/' + ${game.id} + '/edit'}">Edytuj</a> </td>
-        <td><a th:href="@{'/game/' + ${game.id} + '/delete'}">Usuń</a> </td>
-    </tr>
-</table>
-<a th:href="@{/}">Powrót na stronę główną</a>
-<footer th:replace="fragments :: btFooter"></footer>
+<div class="container">
+    <h1>Dostępne Gry</h1>
+    <a class="btn btn-primary" th:href="@{/game/add}">Dodaj nową grę</a>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Tytuł</th>
+            <th>Cena</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr th:each="game:${games}">
+            <td th:text="${game.id}"></td>
+            <td><a th:href="@{'/game/' + ${game.id}}" th:text="${game.title}"></a></td>
+            <td th:text="${game.price}"></td>
+            <td><a class="btn btn-primary" th:href="@{'/game/' + ${game.id} + '/edit'}">Edytuj</a></td>
+            <td><a class="btn btn-secondary" th:href="@{'/game/' + ${game.id} + '/delete'}">Usuń</a></td>
+        </tr>
+    </table>
+    <a th:href="@{/}">Powrót na stronę główną</a>
+</div><footer th:replace="fragments :: btFooter"></footer>
 <script th:replace="fragments :: btScript"></script>
 </body>
 </html>
