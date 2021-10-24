@@ -25,7 +25,7 @@ public class SubscriptionService {
             IllegalArgumentException ex = new IllegalArgumentException("Nie znaleziono użytkownika");
             log.error("Błąd tworzenia subskrypcji", ex);
         } if (subscription.getGame() == null) {
-            IllegalArgumentException ex = new IllegalArgumentException("Gra o zadanym ID nie istnieje");
+            IllegalArgumentException ex = new IllegalArgumentException("Gra nie istnieje. Subskrypcja musi być przypisanan do użytkownika i gry.");
             log.error("Błąd tworzenia subskrypcji", ex);
         }
             subscriptionRepository.save(subscription);

@@ -14,7 +14,7 @@
     </tr>
     <tr th:each="subscription: ${subscriptions}">
         <td><a th:href="@{'/subscription/' + ${subscription.id}}"  th:text="${subscription.id}"></a></td>
-        <td><a th:href="@{'/subscription/' + ${subscription.id}}" th:text="${subscription.game}"></a></td>
+        <td><a th:href="@{'/subscription/' + ${subscription.id}}" th:text="${subscription.game.title}"></a></td>
         <td><a th:href="@{'/subscription/' + ${subscription.id}}"  th:text="${subscription.user}"></a></td>
         <td><a th:href="@{'/subscription/' + ${subscription.id}}"  th:text="${subscription.expireDate}"></a></td>
         <td><a th:href="@{'/subscription/' + ${subscription.id} + '/edit'}" >Edytuj</a></td>

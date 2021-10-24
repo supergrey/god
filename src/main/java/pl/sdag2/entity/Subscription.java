@@ -13,10 +13,12 @@ public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String game;
+    @ManyToOne
+    private Game game;
     private String user;
     private LocalDate expireDate;
 
-
-
+//    public String getGame_Title() {
+//        return game.getTitle();
+//    }
 }
