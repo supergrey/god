@@ -3,6 +3,7 @@ package pl.sdag2.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import pl.sdag2.entity.Subscription;
+import pl.sdag2.entity.User;
 import pl.sdag2.repository.SubscriptionRepository;
 
 import java.util.List;
@@ -72,4 +73,5 @@ public class SubscriptionService {
             }
             return subscriptionRepository.findById(id).get();
         }
-    }
+
+}

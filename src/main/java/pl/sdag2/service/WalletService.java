@@ -28,7 +28,7 @@ public class WalletService {
             throw exception;
         }
         walletRepository.save(wallet);
-        log.info("Utworzono nowy portfel użytkownika: " + wallet.getUser());
+        log.info("Utworzono nowy portfel: " + wallet);
     }
 
     public void update(Wallet wallet) {
@@ -38,7 +38,7 @@ public class WalletService {
             log.error("Błąd edycji portfela", exception);
         }
         walletRepository.save(wallet);
-        log.info("Edytowano portfel użytkownika: " + wallet.getUser());
+        log.info("Edytowano portfel: " + wallet);
     }
 
     public void deleteById(Long id) {

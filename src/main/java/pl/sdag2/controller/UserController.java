@@ -4,7 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import pl.sdag2.entity.User;
+import pl.sdag2.entity.Wallet;
 import pl.sdag2.service.UserService;
+import pl.sdag2.service.WalletService;
 
 import java.util.List;
 
@@ -12,9 +14,11 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
+    private final WalletService walletService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, WalletService walletService) {
         this.userService = userService;
+        this.walletService = walletService;
     }
 
     @GetMapping("/all")
@@ -25,12 +29,17 @@ public class UserController {
     }
 
     @GetMapping("/add")
-    public String getForm(@ModelAttribute("user") User user) {
+    public String getForm(
+            @ModelAttribute("user") User user, @ModelAttribute("wallet") Wallet wallet
+    ) {
         return "user/form";
     }
 
     @PostMapping("/add")
     public String postForm(User user) {
+        Wallet wallet = new Wallet();
+        walletService.create(wallet);
+        user.setWallet(wallet);
         userService.create(user);
         return "redirect:/user/all";
     }

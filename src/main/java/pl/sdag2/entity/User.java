@@ -4,11 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.math.BigDecimal;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -21,6 +19,10 @@ public class User {
     private String password;
     private String email;
     private UserType userType = UserType.NORMAL;
-    private BigDecimal wallet;
+    @OneToOne
+    private Wallet wallet;
+    @OneToMany
+    private List<Subscription> subscriptions = new ArrayList<>();
+
 }
 
