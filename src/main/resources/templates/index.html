@@ -3,15 +3,16 @@
 <head th:replace="fragments :: myHead(title = 'Strona główna')"></head>
 <body>
 <div th:replace="fragments :: navBar"></div>
-<h1>GAMES ON DEMAND</h1>
-<ul>
-    <li><a th:href="@{/game/all}">Wszystkie gry</a></li>
-    <li><a th:href="@{/user/all}">Użytkownicy</a></li>
-    <li><a th:href="@{/subscription/all}">Subskrypcje</a></li>
-    <li><a th:href="@{/wallet/all}">Portfele</a></li>
+<div class="container">
+    <h1>GAMES ON DEMAND</h1>
+    <ul>
+        <li><a th:href="@{/game/all}">Wszystkie gry</a></li>
+        <li><a th:href="@{/user/all}">Użytkownicy</a></li>
+        <li><a th:href="@{/subscription/all}">Subskrypcje</a></li>
+        <li><a th:href="@{/wallet/all}">Portfele</a></li>
 
-</ul>
-<footer th:replace="fragments :: btFooter"></footer>
+    </ul>
+</div><footer th:replace="fragments :: btFooter"></footer>
 <script th:replace="fragments :: btScript"></script>
 </body>
 </html>

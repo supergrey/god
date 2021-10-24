@@ -5,7 +5,8 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -20,5 +21,8 @@ public class User {
     private UserType userType = UserType.NORMAL;
     @OneToOne
     private Wallet wallet;
+    @OneToMany
+    private List<Subscription> subscriptions = new ArrayList<>();
+
 }
 
