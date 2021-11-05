@@ -4,7 +4,7 @@
 <body>
 <div th:replace="fragments :: navBar"></div>
 <div th:object="${wallet}">
-    <h1 th:text="*{user}"></h1>
+    <h1 th:text="*{id}"></h1>
     <p> Wartość portfela: <span th:text="*{accountBalance}"></span></p>
     <p> Metoda płatności: <span th:text="*{payMethod}"></span></p>
 </div>

@@ -7,23 +7,22 @@
 <table>
     <thead>
     <tr>
-        <th>Użytkownik</th>
+        <th>Id portfela</th>
         <th>Wartość portfela</th>
         <th>Metoda płatności</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="wallet : ${wallets}">
-        <td> <a th:href="@{'/wallet/' + ${wallet.id}}" th:text="${wallet.user}"></a></td>
+        <td> <a th:href="@{'/wallet/' + ${wallet.id}}" th:text="${wallet.id}"></a></td>
         <td th:text="${wallet.accountBalance}"></td>
         <td th:text="${wallet.payMethod}"></td>
         <td><a th:href="@{'/wallet/' + ${wallet.id} + '/edit'}">Edytuj</a> </td>
-        <td><a th:href="@{'/wallet/' + ${wallet.id} + '/delete'}">Usuń</a> </td>
     </tr>
     </tbody>
 
 </table>
-<a th:href="@{/wallet/add}">Dodaj portfel</a> <br>
+<!--<a th:href="@{/wallet/add}">Dodaj portfel</a> <br>-->
 <a th:href="@{/}">Powrót na stronę główną</a>
 <footer th:replace="fragments :: btFooter"></footer>
 <script th:replace="fragments :: btScript"></script>

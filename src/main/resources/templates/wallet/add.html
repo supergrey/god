@@ -5,7 +5,6 @@
 <div th:replace="fragments :: navBar"></div>
 <h1>Utwórz portfel</h1>
 <form th:object="${wallet}" method="post">
-    <label>Użytkownik: <input type="text" th:field="*{user}"></label>
     <label>Wartość portfela: <input type="text" th:field="*{accountBalance}"></label>
     <label>Metoda płatności:
         <select name="payMethod" th:field="*{payMethod}">
