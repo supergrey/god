@@ -6,7 +6,7 @@
 <div class="container"><h1>Użytkownik o id <strong th:text="${user.id}"></strong></h1>
     <ul class="list-group">
         <li class="list-group-item">Login: <strong th:text="${user.login}"></strong></li>
-        <li class="list-group-item">Stan konta: <strong th:text="${user.wallet}"></strong></li>
+        <li class="list-group-item">Stan konta: <strong th:text="${user.wallet.accountBalance}"></strong></li>
         <li class="list-group-item">Email: <strong th:text="${user.email}"></strong></li>
         <li class="list-group-item">Rodzaj konta: <strong th:text="${user.userType}"></strong></li>
     </ul>
