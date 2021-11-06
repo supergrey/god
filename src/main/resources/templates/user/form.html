@@ -6,7 +6,7 @@
 
 <div class="container">
   <h1>Dodaj lub edytuj użytkownika</h1>
-  <form class="row g-3" th:object="${user}" method="post">
+  <form class="row g-3" th:object="${user}" method="post" th:action="@{/user/add}">
     <div class="col-md-6">
       <label for="inputAddress" class="form-label">Nazwa użytkownika</label>
       <input th:field="*{login}" type="text" class="form-control" id="inputAddress">
