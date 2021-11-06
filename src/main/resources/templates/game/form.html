@@ -10,7 +10,7 @@
     <form method="post" th:object="${game}" th:action="@{/game/add}">
         <label>Tytuł gry: <input type="text" th:field="*{title}"></label>
         <label>Cena: <input type="number" step="0.01" th:field="*{price}"></label>
-        <input class="btn btn-primary" type="submit">
+        <input class="btn btn-primary" type="submit" value="Dodaj">
     </form>
 </div>
 <footer th:replace="fragments :: btFooter"></footer>

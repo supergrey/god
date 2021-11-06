@@ -10,6 +10,12 @@
     <ul class="list-group">
     <li class="list-group-item"> Cena: <span th:text="*{price}"></span></li>
     </ul>
+    <div class="constantsSummary" >
+      <p> Krótki opis gry...</p>
+    </div>
+    <form method="post" th:action="@{/subskrypcja/add}">
+      <input class="btn btn-dark" type="submit" value="Subskrybuj">
+    </form>
   </div>
   <div class="btn-group">
     <a class="btn btn-outline-dark" th:href="@{'/game/' + ${game.id} + '/edit'}" role="button">Edytuj</a>
