@@ -35,7 +35,7 @@ public class UserController {
     public String getList(ModelMap modelMap) {
         List<User> users = userService.getAll();
         modelMap.addAttribute("users", users);
-        users.stream().forEach(user -> {log.info(user.getUserType().name());});
+//        users.stream().forEach(user -> {log.info(user.getUserType().name());});
         return "/user/all";
     }
 

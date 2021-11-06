@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .loginPage("/login")
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/game/all", "/user/add", "/images/**").permitAll()
+                .antMatchers("/", "/game/all", "/user/add", "/images/**", "/static/favicon.ico").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated();
     }
