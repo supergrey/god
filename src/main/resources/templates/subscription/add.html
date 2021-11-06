@@ -6,7 +6,7 @@
 <div class="container">
 <h1>Dodaj nową subskrypcję</h1>
 
-<form class="row g-3" th:object="${subscription}" method="post" >
+<form class="row g-3" th:object="${subscription}" method="post" th:action="@{/subscription/add}">
   <div>
     <label class="form-label" >Tytuł gry:
       <select  class="form-select" name="game" id="game" >
