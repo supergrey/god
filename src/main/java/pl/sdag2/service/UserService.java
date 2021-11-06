@@ -1,6 +1,9 @@
 package pl.sdag2.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import pl.sdag2.entity.User;
 import pl.sdag2.repository.UserRepository;
@@ -9,7 +12,7 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
@@ -54,5 +57,11 @@ public class UserService {
             log.error("Nie można wyświetlić użytkownika", ex);
         }
         return userRepository.findById(id).get();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        return userRepository.findByLogin(login)
+                .orElseThrow(() -> new UsernameNotFoundException(login));
     }
 }

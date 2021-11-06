@@ -1,5 +1,7 @@
 package pl.sdag2.controller;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -12,19 +14,28 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/user")
+@Slf4j
 public class UserController {
     private final UserService userService;
     private final WalletService walletService;
+//    private final PasswordEncoder passwordEncoder;
 
     public UserController(UserService userService, WalletService walletService) {
         this.userService = userService;
         this.walletService = walletService;
+//        this.passwordEncoder = passwordEncoder;
     }
+
+//    @GetMapping("/login")
+//    public String getLoginForm() {
+//        return "user-register";
+//    }
 
     @GetMapping("/all")
     public String getList(ModelMap modelMap) {
         List<User> users = userService.getAll();
         modelMap.addAttribute("users", users);
+        users.stream().forEach(user -> {log.info(user.getUserType().name());});
         return "/user/all";
     }
 
