@@ -10,12 +10,14 @@
         <th>Id</th>
         <th>Tytuł</th>
         <th>Nazwa użytkownika</th>
+        <th>Data utworzenia subskrypcji</th>
         <th>Data wygaśnięcia subskrypcji</th>
     </tr>
     <tr th:each="subscription: ${subscriptions}">
         <td><a th:href="@{'/subscription/' + ${subscription.id}}"  th:text="${subscription.id}"></a></td>
         <td><a th:href="@{'/subscription/' + ${subscription.id}}" th:text="${subscription.game.title}"></a></td>
         <td><a th:href="@{'/subscription/' + ${subscription.id}}"  th:text="${subscription.user}"></a></td>
+        <td><span th:text="${subscription.activationDate}"></span></td>
         <td><a th:href="@{'/subscription/' + ${subscription.id}}"  th:text="${subscription.expireDate}"></a></td>
         <td><a th:href="@{'/subscription/' + ${subscription.id} + '/edit'}" >Edytuj</a></td>
         <td><a th:href="@{'/subscription/' + ${subscription.id} + '/delete'}" >Usuń</a></td>

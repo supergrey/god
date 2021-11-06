@@ -5,9 +5,68 @@
 <div th:replace="fragments :: navBar"></div>
 <div class="container">
   <h1>Nie ma takiego adresu</h1>
+  <h2>Wystąpił błąd:</h2>
+
+  <table class="table">
+    <tr>
+      <td>
+        <span class="legend">Date</span>
+      </td>
+      <td>
+        <span th:text="${timestamp}"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="legend">Path</span>
+      </td>
+      <td>
+        <span th:text="${path}"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="legend">Error</span></td>
+      <td>
+        <span th:text="${error}"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="legend">Status</span></td>
+      <td>
+        <span th:text="${status}"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="legend">Message</span>
+      </td>
+      <td>
+        <span th:text="${message}"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="legend">Exception</span>
+      </td>
+      <td>
+        <span th:text="${exception}"></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span class="legend">Trace</span>
+      </td>
+      <td>
+        <span th:text="${trace}"></span>
+      </td>
+    </tr>
+  </table>
   <a th:href="@{/}">Powrót na stronę główną</a>
 </div>
 <footer th:replace="fragments :: btFooter"></footer>
 <script th:replace="fragments :: btScript"></script>
+
 </body>
 </html>

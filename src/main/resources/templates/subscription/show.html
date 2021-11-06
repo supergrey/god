@@ -5,14 +5,14 @@
 <div th:replace="fragments :: navBar"></div>
 <div class="container"><h1>ID subskrypcji: <strong th:number="${subscription.id}"></strong> </h1>
 <ul class="list-group">
-    <li class="list-group-item">Tytuł: <strong th:text="${subscription.game}"></strong></li>
+    <li class="list-group-item">Tytuł: <strong th:text="${subscription.game.title}"></strong></li>
     <li class="list-group-item">Nazwa użytkownika: <strong th:text="${subscription.user}"></strong></li>
     <li class="list-group-item">Data wygaśnięcia: <strong th:date="${subscription.expireDate}"></strong></li>
 </ul>
     <label class="btn-group">
         <a class="btn btn-outline-dark" th:href="@{'/subscription/' + ${subscription.id} + '/edit'}">Edytuj</a>
         <a class="btn btn-outline-dark" th:href="@{'/subscription/' + ${subscription.id} + '/delete'}">Usuń</a>
-        <a class="btn btn-outline-dark" th:href="@{'/subscription/all'}">Powrót do listy użytkowników</a>
+        <a class="btn btn-outline-dark" th:href="@{'/subscription/all'}">Powrót do listy subskrypcji</a>
     </label>
 </div>
 <footer th:replace="fragments :: btFooter"></footer>

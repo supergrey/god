@@ -1,8 +1,10 @@
 package pl.sdag2.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import pl.sdag2.entity.Game;
 import pl.sdag2.entity.Subscription;
 import pl.sdag2.service.GameService;
 import pl.sdag2.service.SubscriptionService;
@@ -10,12 +12,15 @@ import pl.sdag2.service.SubscriptionService;
 import java.util.List;
 
 @Controller
+@Slf4j
 @RequestMapping("/subscription")
 public class SubscriptionController {
     private final SubscriptionService subscriptionService;
+    private final GameService gameService;
 
-    public SubscriptionController(SubscriptionService subscriptionService) {
+    public SubscriptionController(SubscriptionService subscriptionService, GameService gameService) {
         this.subscriptionService = subscriptionService;
+        this.gameService = gameService;
     }
 
     @GetMapping("/all")
@@ -26,12 +31,15 @@ public class SubscriptionController {
     }
 
     @GetMapping("/add")
-    public String getForm(@ModelAttribute("subscription") Subscription subscription) {
+    public String getForm(@ModelAttribute("subscription") Subscription subscription, ModelMap modelMap) {
+        List<Game> games = gameService.getAll();
+        modelMap.addAttribute("games",games);
         return "/subscription/add";
     }
 
     @PostMapping("/add")
     public String postForm(Subscription subscription) {
+        log.info("subscription: " + subscription.toString());
         subscriptionService.createSubscription(subscription);
         return "redirect:/subscription/all";
     }
