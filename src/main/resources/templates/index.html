@@ -4,15 +4,39 @@
 <body>
 <div th:replace="fragments :: navBar"></div>
 <div class="container">
-    <h1>GAMES ON DEMAND</h1>
-    <ul>
-        <li><a th:href="@{/game/all}">Wszystkie gry</a></li>
-        <li><a th:href="@{/user/all}">Użytkownicy</a></li>
-        <li><a th:href="@{/subscription/all}">Subskrypcje</a></li>
-<!--        <li><a th:href="@{/wallet/all}">Portfele</a></li>-->
 
-    </ul>
-</div><footer th:replace="fragments :: btFooter"></footer>
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" sec:authorize="isAnonymous()">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+            <h1 class="display-4 fw-normal">GAMES ON DEMAND</h1>
+            <p class="lead fw-normal">Zaloguj się lub zarejestraj i graj w setki gier online</p>
+            <a class="btn btn-outline-dark" th:href="@{/login}">Logowanie</a>
+            <a class="btn btn-outline-dark" href="#">Rejestracja</a>
+        </div>
+        <div class="product-device shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    </div>
+
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" sec:authorize="isAuthenticated()">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+            <h1 class="display-4 fw-normal">GAMES ON DEMAND</h1>
+            <p class="lead fw-normal">Witaj ponownie!</span> </p>
+            <a class="btn btn-outline-dark" th:href="@{#}">Mój profil</a>
+        </div>
+        <div class="product-device shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    </div>
+
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark text-white">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+            <h2 class="display-4 fw-normal">Poznaj nasze gry</h2>
+            <a class="btn btn-outline-light mt-3" th:href="@{/game/all}">Przeglądaj</a>
+        </div>
+        <div class="product-device shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    </div>
+</div>
+
+<footer th:replace="fragments :: btFooter"></footer>
 <script th:replace="fragments :: btScript"></script>
 </body>
 </html>
