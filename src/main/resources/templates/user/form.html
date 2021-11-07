@@ -9,15 +9,21 @@
   <form class="row g-3" th:object="${user}" method="post" th:action="@{/user/add}">
     <div class="col-md-6">
       <label for="inputAddress" class="form-label">Nazwa użytkownika</label>
-      <input th:field="*{login}" type="text" class="form-control" id="inputAddress">
+      <input th:field="*{login}" type="text" class="form-control" id="inputAddress"
+             th:classappend="${#fields.hasErrors('login')} ? 'is-invalid' : ''" required="required">
+      <div class="invalid-feedback" th:errors="*{login}"></div>
     </div>
     <div class="col-md-6">
       <label for="inputPassword4" class="form-label">Hasło</label>
-      <input th:field="*{password}" type="password" class="form-control" id="inputPassword4">
+      <input th:field="*{password}" type="password" class="form-control" id="inputPassword4"
+             th:classappend="${#fields.hasErrors('password')} ? 'is-invalid' : ''" required="required">
+      <div class="invalid-feedback" th:errors="*{password}"></div>
     </div>
     <div class="col-md-12">
       <label for="inputEmail4" class="form-label">Email</label>
-      <input th:field="*{email}" type="email" class="form-control" id="inputEmail4">
+      <input th:field="*{email}" type="email" class="form-control" id="inputEmail4"
+             th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''" required="required">
+      <div class="invalid-feedback" th:errors="*{email}"></div>
     </div>
     <input type="hidden" th:field="*{wallet}">
     <div class="col-12">

@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.sdag2.entity.User;
 import pl.sdag2.entity.Wallet;
@@ -47,10 +49,13 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public String postForm(User user) {
+    public String postForm(@Validated User user, BindingResult bindingResult) {
         Wallet wallet = new Wallet();
         walletService.create(wallet);
         user.setWallet(wallet);
+        if (bindingResult.hasErrors()) {
+            return "/user/form";
+        }
         userService.create(user);
         return "redirect:/user/all";
     }

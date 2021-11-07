@@ -8,6 +8,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -20,8 +24,14 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty
+    @NotBlank
     private String login;
+    @NotEmpty(message = "Hasło nie może być puste")
+    @Size(min = 4, message = "Hasło musi mieć przynajmniej 4 znaki")
     private String password;
+
+    @Email(regexp = "[a-zA-Z0-9_.]+@[a-zA-Z0-9_.]+[.][a-zA-Z0-9]+")
     private String email;
 //    @Enumerated(EnumType.STRING)
     private UserType userType = UserType.NORMAL;
