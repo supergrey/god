@@ -28,10 +28,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin()
 //                .loginPage("/login")
                 .and()
+
                 .authorizeRequests()
                 .antMatchers("/", "/game/**", "/user/add", "/images/**", "/static/favicon.ico").permitAll()
                 .antMatchers("/admin","/game/add").hasRole("ADMIN")
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+
+                .and()
+
+                .logout().logoutSuccessUrl("/");
     }
 
     @Override
