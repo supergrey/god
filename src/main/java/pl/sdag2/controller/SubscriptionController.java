@@ -9,6 +9,7 @@ import pl.sdag2.entity.Subscription;
 import pl.sdag2.service.GameService;
 import pl.sdag2.service.SubscriptionService;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -34,6 +35,10 @@ public class SubscriptionController {
     public String getForm(@ModelAttribute("subscription") Subscription subscription, ModelMap modelMap) {
         List<Game> games = gameService.getAll();
         modelMap.addAttribute("games",games);
+        LocalDateTime now = LocalDateTime.now();
+        subscription.setActivationDate(now);
+        LocalDateTime tomorrow = now.plusDays(1);
+        subscription.setExpireDate(tomorrow);
         return "/subscription/add";
     }
 

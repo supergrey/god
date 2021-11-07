@@ -18,8 +18,9 @@
   <div>
     <label class="form-label" >Nazwa użytkownika: <input class="form-control"  type="text" th:field="*{user}"></label>
   </div>
-  <input type="datetime-local" th:field="*{activationDate}" th:value="${#temporals.formatISO(#temporals.createNow())}">
-  <input type="datetime-local" th:field="*{expireDate}" th:min="${#temporals.format(#temporals.createNow(), 'dd.MM.yyyy, HH:mm')}" th:text="${#temporals.format(#temporals.createNow(), 'dd.MM.yyyy, HH:mm')}">
+  <input type="text" th:field="*{activationDate}" th:value="*{activationDate}" class="form-control" readonly="readonly">
+<!--  <input type="text" th:field="*{expireDate}" th:value="*{expireDate}" class="form-control" readonly="readonly">-->
+  <input type="datetime-local" th:field="*{expireDate}" th:value="${#temporals.format(#temporals.createNow(), 'dd.MM.yyyy''T''HH:MM' ) }" class="form-control" >
   <div><input  class="btn btn-dark" type="submit" value="Dodaj"></div>
 </form>
 </div>

@@ -19,7 +19,15 @@
       </form>
     </div>
     <div sec:authorize="isAuthenticated()" >
-    <form method="post" th:action="@{/subskrypcja/add}">
+    <form method="post" th:object="${subscription}" th:action="@{/subskrypcja/add}">
+
+<!--      <input class="form-control"  th:value="${game.id}" th:text="${game.title}" th:field="*{game}"></input>-->
+<!--      &lt;!&ndash;            <input type="range" th:field="*{game}"> &ndash;&gt;-->
+<!--    <div>-->
+<!--      <label class="form-label" >Nazwa użytkownika: <input class="form-control"  type="text" th:field="*{user}"></label>-->
+<!--    </div>-->
+<!--    <input type="text" th:field="*{activationDate}" th:value="*{activationDate}" class="form-control" readonly="readonly">-->
+<!--    <input type="text" th:field="*{expireDate}" th:value="*{expireDate}" class="form-control" readonly="readonly">-->
       <input class="btn btn-dark" type="submit" value="Subskrybuj">
     </form>
     </div>
