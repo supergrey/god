@@ -1,10 +1,13 @@
 package pl.sdag2.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.sdag2.entity.User;
@@ -53,6 +56,21 @@ public class UserController {
         Wallet wallet = new Wallet();
         walletService.create(wallet);
         user.setWallet(wallet);
+
+        try {
+            UserDetails userDetails = userService.loadUserByUsername(user.getUsername());
+            if (userDetails.getUsername() != null) {
+                FieldError fieldError = new FieldError(
+                        "user",
+                        "login",
+                        "Użytkownik o takiej nazwie już istnieje"
+                );
+                bindingResult.addError(fieldError);
+            }
+        }
+        catch (UsernameNotFoundException e) {
+            log.info(e.getMessage());
+        }
         if (bindingResult.hasErrors()) {
             return "/user/form";
         }
