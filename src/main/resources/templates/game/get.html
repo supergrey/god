@@ -13,6 +13,11 @@
     <div class="constantsSummary" >
       <p> Krótki opis gry...</p>
     </div>
+    <div sec:authorize="isAnonymous()">
+      <form method="post" autocomplete="off" th:action="@{/login}">
+        <input class="btn btn-dark" type="submit" value="Subskrybuj">
+      </form>
+    </div>
     <div sec:authorize="isAuthenticated()" >
     <form method="post" th:action="@{/subskrypcja/add}">
       <input class="btn btn-dark" type="submit" value="Subskrybuj">

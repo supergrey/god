@@ -56,6 +56,8 @@
       <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Kontakt</a></li>
     </ul>
     <p class="text-center text-light">© 2021 Heaven Inc</p>
+    <div sec:authorize="isAnonymous()">
+      Użytkownik anonimowy</div>
     <div sec:authorize="isAuthenticated()">
       Zalogowany jako <span sec:authentication="name"></span></div>
   </div>
